@@ -33,6 +33,10 @@ const Navbar: React.FC<{}> = () => {
     <div className="logo"><BiLogoBitcoin/> 
     {/* <span>Oldbnb</span> */}
     </div>
+
+    <div className="circle">
+      Oldbnb
+    </div>
     
 
     <div className='search-bar'>
