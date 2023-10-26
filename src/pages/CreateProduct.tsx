@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import productsService from '../../Utils/productService';
 
 interface Product {
   creationDate: string | number | Date;

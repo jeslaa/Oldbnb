@@ -1,0 +1,25 @@
+.btn-container{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    .details-btn{ 
+        background-color:#374151;
+        padding: 12px;
+        border-style: none;
+    }
+
+    a{
+        color: #ffff;
+        text-decoration: none;
+        
+    }
+
+    .details-btn:hover{
+        background-color:#446491;
+    }
+}
+
+.card-body{
+    background-color: #BFBFBF;
+}
+

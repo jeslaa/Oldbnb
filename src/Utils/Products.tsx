@@ -1,6 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { db } from '../config/config';
-import { collection, getDocs } from 'firebase/firestore';
+import React, { useEffect, useState } from "react";
+import { db } from "../config/config";
+import { collection, getDocs } from "firebase/firestore";
+import { Link } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './products.scss'
 
 interface Product {
   creationDate: string | number | Date;
@@ -13,23 +16,25 @@ interface Product {
 const Products: React.FC = () => {
   const [data, setData] = useState<Product[]>([]);
 
+  const imageMaxHeight = '400px'
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         // Reference to Firestore collection
-        const productsCollection = collection(db, 'products')
-        const querySnapshot = await getDocs(productsCollection)
+        const productsCollection = collection(db, "products");
+        const querySnapshot = await getDocs(productsCollection);
 
         const newData: Product[] = [];
 
-        querySnapshot.forEach((doc : any) => {
+        querySnapshot.forEach((doc: any) => {
           const productData = doc.data() as Product;
           newData.push(productData);
         });
 
         setData(newData);
       } catch (error) {
-        console.error('Error fetching data: ', error);
+        console.error("Error fetching data: ", error);
       }
     };
 
@@ -39,22 +44,29 @@ const Products: React.FC = () => {
   return (
     <div>
       <h2>Fetched Data</h2>
-      <ul>
+      <div className="row">
         {data.map((item, index) => (
-          <li key={index}>
-            <div>Product Name: {item.productName}</div>
-            <div>Description: {item.description}</div>
-            <div>Price: ${item.price}</div>
-            <div>Image URLs: 
-                {item.imageUrls.map((imageUrl, i) => (
-                    <img key={i} src={imageUrl} alt={`Image ${i}`}></img>
-                ))}
+          <div className="col-md-4" key={index}>
+            <div className='card container-fluid'>
+              <img src={item.imageUrls[0]} className="card-img-top" alt="Product Image" style={{maxHeight: imageMaxHeight}}/>
+              <div className="card-body">
+                <h5 className="card-title">{item.productName}</h5>
+                <p className="card-text">{item.description}</p>
+                <p className="card-text">Price: ${item.price}</p>
+                <div className="btn-container">
+                <button className="details-btn">
+                <Link to="/" >Detaljer</Link>
+                </button>
                 </div>
-          </li>
+                
+                
+              </div>
+            </div>
+          </div>
         ))}
-      </ul>
-    </div>
+      </div>
+</div>
   );
-}
+};
 
 export default Products;
