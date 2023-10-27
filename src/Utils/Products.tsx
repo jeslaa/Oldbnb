@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { db } from "../config/config";
 import { collection, getDocs } from "firebase/firestore";
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -13,60 +12,60 @@ interface Product {
   imageUrls: string[];
 }
 
-const Products: React.FC = () => {
-  const [data, setData] = useState<Product[]>([]);
+// const Products: React.FC = () => {
+// //   // const [data, setData] = useState<Product[]>([]);
 
-  const imageMaxHeight = '400px'
+// //   // const imageMaxHeight = '400px'
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        // Reference to Firestore collection
-        const productsCollection = collection(db, "products");
-        const querySnapshot = await getDocs(productsCollection);
+// //   // useEffect(() => {
+// //   //   const fetchData = async () => {
+// //   //     try {
+// //   //       // Reference to Firestore collection
+// //   //       const productsCollection = collection(db, "products");
+// //   //       const querySnapshot = await getDocs(productsCollection);
 
-        const newData: Product[] = [];
+// //   //       const newData: Product[] = [];
 
-        querySnapshot.forEach((doc: any) => {
-          const productData = doc.data() as Product;
-          newData.push(productData);
-        });
+// //   //       querySnapshot.forEach((doc: any) => {
+// //   //         const productData = doc.data() as Product;
+// //   //         newData.push(productData);
+// //   //       });
 
-        setData(newData);
-      } catch (error) {
-        console.error("Error fetching data: ", error);
-      }
-    };
+// //   //       setData(newData);
+// //   //     } catch (error) {
+// //   //       console.error("Error fetching data: ", error);
+// //   //     }
+// //   //   };
 
-    fetchData();
-  }, []);
+// //   //   fetchData();
+// //   // }, []);
 
-  return (
-    <div>
-      <h2>Fetched Data</h2>
-      <div className="row">
-        {data.map((item, index) => (
-          <div className="col-md-4" key={index}>
-            <div className='card container-fluid'>
-              <img src={item.imageUrls[0]} className="card-img-top" alt="Product Image" style={{maxHeight: imageMaxHeight}}/>
-              <div className="card-body">
-                <h5 className="card-title">{item.productName}</h5>
-                <p className="card-text">{item.description}</p>
-                <p className="card-text">Price: ${item.price}</p>
-                <div className="btn-container">
-                <button className="details-btn">
-                <Link to="/" >Detaljer</Link>
-                </button>
-                </div>
+// //   return (
+// //     <div>
+// //       <h2>Fetched Data</h2>
+// //       <div className="row">
+// //         {data.map((item, index) => (
+// //           <div className="col-md-4" key={index}>
+// //             <div className='card'>
+// //               <img src={item.imageUrls[0]} className="card-img-top" alt="Product Image" style={{maxHeight: imageMaxHeight}}/>
+// //               <div className="card-body">
+// //                 <h5 className="card-title">{item.productName}</h5>
+// //                 <p className="card-text">{item.description}</p>
+// //                 <div className="container">
+// //                 <h4 className="card-text">Price: ${item.price}</h4>
+// //                 <button className="details-btn">
+// //                 <Link to="/" >Detaljer</Link>
+// //                 </button>
+// //                 </div>
                 
                 
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-</div>
-  );
-};
+// //               </div>
+// //             </div>
+// //           </div>
+// //         ))}
+// //       </div>
+// // </div>
+//   // );
+// };
 
-export default Products;
+// export default Products;

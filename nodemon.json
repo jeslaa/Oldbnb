@@ -1,0 +1,10 @@
+{
+  "execMap": {
+    "ts": "node --loader ts-node/esm --experimental-specifier-resolution=node"
+  },
+  "ext": "ts,json",
+  "watch": ["database"],
+  "ignore": ["database/**/*.spec.ts"],
+  "script": "database/server.ts",
+  "exec": "ts-node"
+}
