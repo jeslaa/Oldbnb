@@ -6,5 +6,5 @@
   "watch": ["database"],
   "ignore": ["database/**/*.spec.ts"],
   "script": "database/server.ts",
-  "exec": "ts-node"
+  "exec": "node"
 }

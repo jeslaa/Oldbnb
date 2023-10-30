@@ -1,14 +1,18 @@
 import express  from 'express'
 import mongoose from 'mongoose';
+import cors from 'cors'
+import productRoute from './Database/routes/productRoute.mjs'
+import errorMiddleware from './Database/middleware/errorMiddleware.mjs';
 
 const app = express()
 
-//routes
+app.use(express.json())
+app.use(cors())
 
-app.get('/', (req, res) => {
-    res.send('Hello node api')
-})
+//Routes
+app.use('/api/products', productRoute)
 
+app.use(errorMiddleware)
 
 //Connecting to mongodb
 mongoose.connect('mongodb+srv://Admin:Bytmig123@oldbnbapi.8n47zpi.mongodb.net/Products?retryWrites=true&w=majority')
