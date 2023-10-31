@@ -7,9 +7,7 @@ import Navbar from './components/navbar/Navbar'
 import ProductForm from './components/productform/ProductForm'
 import Register from './pages/Register/Register'
 
-type Props = {}
-
-const App = (props: Props) => {
+const App = () => {
   return (
     <>
     

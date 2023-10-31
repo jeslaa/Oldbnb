@@ -5,7 +5,7 @@ import Products from "../../components/product/Product";
 import './Home.scss'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-interface Product {
+type Product = {
   creationDate: string | number | Date;
   productName: string;
   description: string;
