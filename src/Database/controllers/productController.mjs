@@ -1,4 +1,4 @@
-import Product from '../models/productModel.mjs'
+import Product from '../schema/productSchema.mjs'
 
 //Fetch products
 const getProducts = async(req,res) => {

@@ -1,23 +1,36 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./Register.scss";
-import axios from 'axios'
 import { useState } from "react";
 
 type User = {
   userName: string;
   email: string;
   password: string;
-}
+};
 
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  
-  function registerUser(e : React.FormEvent) {
-    e.preventDefault()
-    axios.post('http://localhost:3000/api/register')
-  }
+  const navigate = useNavigate();
+
+  const registerUser = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (name === "" || email === "" || password === "") {
+      alert("Var vänlig och fyll i allt i formuläret");
+    }
+    try {
+      await axios.post("http://localhost:3000/api/users/", {
+        userName: name,
+        email: email,
+        password: password,
+      });
+      navigate("/Login");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <section className="login-section">
@@ -26,10 +39,10 @@ const Register = () => {
           <h1>Registrera</h1>
           <label typeof="name">För och efternamn:</label>
           <input
-            type="name"
+            type="userName"
             placeholder="John Doe"
             value={name}
-            onChange={e => setName(e.target.value)}
+            onChange={(e) => setName(e.target.value)}
           />
 
           <label typeof="email">Email:</label>
@@ -37,7 +50,7 @@ const Register = () => {
             type="email"
             placeholder="dinmail@mail.com"
             value={email}
-            onChange={e => setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
           />
 
           <label typeof="password">Lösenord:</label>
@@ -45,7 +58,7 @@ const Register = () => {
             type="password"
             placeholder="lösenord"
             value={password}
-            onChange={e => setPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <button className="login-btn">Registrera</button>
 

@@ -1,5 +1,4 @@
 import express from 'express'
-import Product from '../models/productModel.mjs';
 import { getProducts, postProducts, getProductsById, updateProducts, deleteProducts } from '../controllers/productController.mjs'
 
 const router = express.Router()

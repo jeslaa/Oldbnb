@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
-import "./ProductForm.scss";
 import { useNavigate } from "react-router-dom";
+import "./ProductForm.scss";
 
 const ProductForm = () => {
   const [name, setName] = useState("");
@@ -31,8 +31,6 @@ const ProductForm = () => {
   };
 
   return (
-
-
     <form className="form-container" onSubmit={saveProduct}>
       <h2 className="center">Skapa ett boende</h2>
       <div className="form-group">

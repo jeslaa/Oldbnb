@@ -1,4 +1,5 @@
-import User from "../models/userModel.mjs";
+import User from "../schema/userSchema.mjs";
+import bcrypt from 'bcrypt';
 
 //Fetch users
 const getUsers = async(req,res) => {
@@ -13,7 +14,17 @@ const getUsers = async(req,res) => {
 //Register User
 const postUsers = async(req, res) => {
     try {
-        const user = await User.create(req.body)
+        const { userName, email, password } = req.body;
+        const saltRounds = 10
+
+        const hashedPassword = await bcrypt.hash(password, saltRounds)
+
+        const user = await User.create({
+            userName,
+            email,
+            password: hashedPassword
+        });
+
         res.status(200).json(user)
     } catch (error) {
         console.log(error.message)
@@ -22,4 +33,4 @@ const postUsers = async(req, res) => {
 }
 
 
-export { getUsers, postUsers}
+export { getUsers, postUsers }
