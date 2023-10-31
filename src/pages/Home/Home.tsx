@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import Products from "../components/product/Product";
+import Products from "../../components/product/Product";
 import './Home.scss'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
