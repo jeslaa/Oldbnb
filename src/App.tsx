@@ -6,12 +6,13 @@ import Login from './pages/Login/Login'
 import Navbar from './components/navbar/Navbar'
 import ProductForm from './components/productform/ProductForm'
 import Register from './pages/Register/Register'
+import { UserContextProvider } from './context/userContext'
 
 const App = () => {
   return (
     <>
     
-    
+    <UserContextProvider>
     <BrowserRouter>
       <Navbar />
       <Routes>
@@ -23,6 +24,7 @@ const App = () => {
         <Route path='/Register' element={<Register />}/>
       </Routes>
     </BrowserRouter>
+    </UserContextProvider>
     </>
   )
 }

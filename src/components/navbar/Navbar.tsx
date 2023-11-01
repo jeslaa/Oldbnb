@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./Navbar.scss";
 import { Link } from "react-router-dom";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { BiLogoBitcoin } from "react-icons/bi";
+import { UserContext } from "../../context/userContext";
 
 // Define a type for the search query
 type SearchQuery = string;
@@ -10,6 +11,7 @@ type SearchQuery = string;
 const Navbar: React.FC<{}> = () => {
   const [searchQuery, setSearchQuery] = useState<SearchQuery>(""); // State to hold the search query
   const [menuOpen, setMenuOpen] = useState(false); //State for menu
+  const { user, setUser } = useContext(UserContext)
 
   const handleSearch = () => {
     // Handle the search logic here
@@ -25,6 +27,10 @@ const Navbar: React.FC<{}> = () => {
   const toggleMenu = () => {
     setMenuOpen((open) => !open);
   };
+
+  const handleLogout = () => {
+    setUser(null)
+  }
 
   return (
     <div className={`navbar ${menuOpen ? "open" : ""}`}>
@@ -73,11 +79,18 @@ const Navbar: React.FC<{}> = () => {
           <Link className="links hover link" to="/ContactUs">
             Kontakta Oss
           </Link>
-          <button className="login">
+          { user ? ( 
+            <button className="login links" onClick={handleLogout}>
+            Logga ut
+          </button>
+          ): (
+            <button className="login">
             <Link className="links" to="/Login">
               Logga in
             </Link>
           </button>
+          )}
+          
         </div>
       </nav>
     </div>

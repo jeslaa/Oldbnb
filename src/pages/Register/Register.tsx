@@ -28,6 +28,7 @@ const Register = () => {
       });
       navigate("/Login");
     } catch (error) {
+      alert('Registration failed. Please try again later')
       console.log(error);
     }
   };
