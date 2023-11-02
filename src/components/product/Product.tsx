@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './products.scss'
+import './products.scss';
 
 interface ProductProps {
   product: Product;
@@ -11,35 +11,40 @@ interface Product {
   productName: string;
   description: string;
   price: number;
-  imageUrl: string;
+  imageUrl: string[];
+  _id: string; 
 }
 
 const Product: React.FC<ProductProps> = ({ product }) => {
+  const imageMaxHeight = '400px';
+  const maxDescriptionLength = 50;
 
-    const imageMaxHeight = '400px'
+  const slicedDescription =
+    product.description.length > maxDescriptionLength
+      ? `${product.description.slice(0, maxDescriptionLength)}...`
+      : product.description;
 
   return (
     <div className="col-md-4 section-container">
-            <div className="card">
-              <img
-                src={
-                  product.imageUrl}
-                className="card-img-top"
-                alt="Product Image"
-                style={{ maxHeight: imageMaxHeight }}
-              />
-              <div className="card-body">
-                <h5 className="card-title">{product.productName}</h5>
-                <p className="card-text">{product.description}</p>
-                <div className="container">
-                  <h4 className="card-text">Pris: {product.price}kr</h4>
-                  <button className="details-btn">
-                    <Link to="/">Detaljer</Link>
-                  </button>
-                </div>
-              </div>
-            </div>
+      <div className="card">
+        <img
+          src={product.imageUrl[0]}
+          className="card-img-top"
+          alt="Product Image"
+          style={{ maxHeight: imageMaxHeight }}
+        />
+        <div className="card-body">
+          <h5 className="card-title">{product.productName}</h5>
+          <p className="card-text">{slicedDescription}</p>
+          <div className="container">
+            <h4 className="card-text">Pris: {product.price}kr</h4>
+            <button className="details-btn">
+              <Link to={`/ProductDetails/${product._id}`}>Detaljer</Link>
+            </button>
           </div>
+        </div>
+      </div>
+    </div>
   );
 };
 

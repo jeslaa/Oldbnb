@@ -1,4 +1,5 @@
-import {Dispatch, ReactNode, SetStateAction, createContext, useState} from 'react'
+import axios from 'axios';
+import {Dispatch, ReactNode, SetStateAction, createContext, useState, useEffect} from 'react'
 
 type UserContextType = {
     user: User | null;
@@ -16,6 +17,11 @@ type UserContextProviderProps = {
 
 export function UserContextProvider({children}: UserContextProviderProps) {
     const [user, setUser] = useState<User | null>(null)
+    useEffect(() => {
+        if(!user){
+            // axios.get('')
+        }
+    }, [])
     return(
         <UserContext.Provider value={{user, setUser}}>
             {children}

@@ -14,11 +14,11 @@ const productSchema = mongoose.Schema(
             type: String,
             required: [true, 'You need to enter a description']
         },
-        imageUrl: {
+        imageUrl: [{
             type: String,
             required: [true, 'Image']
 
-        }
+        }]
     },
     {
         timestamps: true

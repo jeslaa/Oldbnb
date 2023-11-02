@@ -10,7 +10,8 @@ type Product = {
   productName: string;
   description: string;
   price: number;
-  imageUrl: string;
+  imageUrl: string[];
+  id: string;
 }
 
 const Home = () => {
@@ -37,9 +38,11 @@ const Home = () => {
 
   return (
     <div>
+      <div className="btn-container"> 
       <button className="product-form"><Link to='/ProductForm'>Skapa Boende</Link></button>
-      <h2>Fetched Data</h2>
-      <div className="row">
+      </div>
+     
+      <div className="row m-0">
         {products.map((product, index) => ( 
           <Products key={index} product={product}/>
         ))}

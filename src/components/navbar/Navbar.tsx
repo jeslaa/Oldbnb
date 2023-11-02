@@ -3,7 +3,7 @@ import "./Navbar.scss";
 import { Link } from "react-router-dom";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { BiLogoBitcoin } from "react-icons/bi";
-import { UserContext } from "../../context/userContext";
+import { UserContext } from "../../context/UserContext";
 
 // Define a type for the search query
 type SearchQuery = string;

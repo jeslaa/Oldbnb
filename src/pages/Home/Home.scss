@@ -2,7 +2,6 @@
     margin-top: 5px;
     margin-right: 15px;
     padding: 6px;
-    float: right;
     background-color: #24b439;
     cursor: pointer;
 
@@ -15,4 +14,9 @@
 
 .product-form:hover{
     background-color:#1b8d2c;
+}
+
+.btn-container{
+    display: flex;
+    justify-content: flex-end;
 }
