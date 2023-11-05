@@ -60,6 +60,8 @@ const ProductDetails: React.FC = () => {
                 <p>Price: {product.price} kr</p>
                 <img src={product.imageUrl[0]} alt="" />
                 <img src={product.imageUrl[1]} alt="" />
+                <img src={product.imageUrl[2]} alt="" />
+                <img src={product.imageUrl[3]} alt="" />
                 {/* Display other product details as needed */}
             </div>
         ) : (

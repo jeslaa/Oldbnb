@@ -7,22 +7,23 @@ const ProductForm = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
-  const [image, setImage] = useState("");
+  const [images, setImages] = useState<string[]>([]);
   const navigate = useNavigate();
 
   const saveProduct = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (name === "" || description === "" || price === "" || image === "") {
+    if (name === "" || description === "" || price === "" || images.length === 0) {
       alert("Var vänlig och fyll i allt i formuläret");
     }
 
+    //Post to database
     try {
       await axios.post("http://localhost:3000/api/products/", {
         productName: name,
         description: description,
         price: price,
-        imageUrl: image,
+        imageUrl: images,
       });
       navigate("/");
     } catch (error) {
@@ -75,8 +76,11 @@ const ProductForm = () => {
           className="form-control"
           id="formGroupExampleInput2"
           placeholder="Bild url"
-          value={image}
-          onChange={(e) => setImage(e.target.value)}
+          value={images.join(',')}
+          onChange={(e) => {
+            const urls = e.target.value.split(',').map((url) => url.trim());
+            setImages(urls);
+          }}
         ></input>
       </div>
       <div className="submit">
