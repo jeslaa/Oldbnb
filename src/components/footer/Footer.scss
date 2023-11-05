@@ -108,3 +108,15 @@
         }
     }
   }
+
+  @media only screen and (max-width: 767px) {
+    .footer{
+        .logo-links{
+            display: none;
+        }
+    }
+
+    .idk{
+        display: none;
+    }
+  }

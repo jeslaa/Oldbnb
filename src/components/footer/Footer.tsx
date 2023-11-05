@@ -30,10 +30,8 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="underline">
+      <div className="underline"></div>
 
-      </div>
-      
       <div className="idk">
         <p className="all-rights">2023 © Alla rättigheter reserverade.</p>
         <p className="p-underline">Användarvilkor</p>
