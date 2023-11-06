@@ -13,16 +13,28 @@ const Login = () => {
   const navigate = useNavigate();
   const {setUser} = useContext(UserContext)
 
+  //Login function
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       const response = await axios.post('http://localhost:3000/api/users/Login', {email, password}, {withCredentials: true})
       const userInfo = response.data
+      
+      // Setting the token
+      const token = response.data.token; 
+      localStorage.setItem('token', token);
+      
       setUser(userInfo)
       alert('Login successful')
       navigate('/')
     } catch (error) {
       alert('Login failed')
+    }
+    const token = localStorage.getItem('token')
+
+    if (token) {
+      // Setting the token in the Axios headers for authenticated requests
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     }
   }
 

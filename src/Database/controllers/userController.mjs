@@ -29,7 +29,7 @@ const loginUser = async (req, res) => {
         
         if (passwordMatch) {
             // Password is correct
-            jwt.sign({email:userDoc.email, id:userDoc._id}, jwtSecret, {}, (error, token) => {
+            jwt.sign({email:userDoc.email, id:userDoc._id}, jwtSecret, {expiresIn: '1h'}, (error, token) => {
                 if (error) throw error
                 return res.cookie('token', token).json(userDoc);
             })
@@ -43,6 +43,19 @@ const loginUser = async (req, res) => {
         res.status(500).json({ message: 'Internal server error' });
     }
 };
+
+//Logout
+const logoutUser = async (req, res) => {
+    try {
+        // Clearing the token
+        res.clearCookie('token');
+        res.status(200).json({ message: 'Logged out successfully' });
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+}
 
 
 //Register User
@@ -67,4 +80,4 @@ const postUsers = async(req, res) => {
 }
 
 
-export { getUsers, postUsers, loginUser }
+export { getUsers, postUsers, loginUser, logoutUser }

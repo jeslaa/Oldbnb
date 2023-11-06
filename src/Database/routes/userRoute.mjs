@@ -1,5 +1,5 @@
 import express from 'express'
-import { getUsers, postUsers, loginUser} from '../controllers/userController.mjs'
+import { getUsers, postUsers, loginUser, logoutUser} from '../controllers/userController.mjs'
 
 const router = express.Router()
 
@@ -10,5 +10,7 @@ router.get('/', getUsers)
 router.post('/', postUsers)
 
 router.post('/Login', loginUser)
+
+router.post('/Logout', logoutUser)  
 
 export default router;

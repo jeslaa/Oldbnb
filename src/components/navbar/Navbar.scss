@@ -75,6 +75,14 @@
         padding: 10px;
     }
 
+    .logout{
+        background-color: firebrick;
+    }
+
+    .logout:hover{
+        background-color: rgb(199, 80, 80)!important;
+    }
+
     .login:hover {
         background-color: #d16900;
         color: #F4F4F4;

@@ -11,7 +11,7 @@ type Product = {
   description: string;
   price: number;
   imageUrl: string[];
-  id: string;
+  _id: string;
 }
 
 const Home = () => {

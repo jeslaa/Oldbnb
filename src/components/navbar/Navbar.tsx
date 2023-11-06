@@ -1,9 +1,10 @@
 import React, { useState, useContext } from "react";
 import "./Navbar.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { BiLogoBitcoin } from "react-icons/bi";
 import { UserContext } from "../../context/UserContext";
+import axios from "axios";
 
 // Define a type for the search query
 type SearchQuery = string;
@@ -12,6 +13,9 @@ const Navbar: React.FC<{}> = () => {
   const [searchQuery, setSearchQuery] = useState<SearchQuery>(""); // State to hold the search query
   const [menuOpen, setMenuOpen] = useState(false); //State for menu
   const { user, setUser } = useContext(UserContext)
+  const navigate = useNavigate()
+  const token = localStorage.getItem('token')
+  const userIsLoggedIn = !!token //Flag to indicate if the user is logged in
 
   const handleSearch = () => {
     // Handle the search logic here
@@ -28,9 +32,18 @@ const Navbar: React.FC<{}> = () => {
     setMenuOpen((open) => !open);
   };
 
-  const handleLogout = () => {
-    setUser(null)
+  const handleLogout = async () => {
     localStorage.removeItem('token')
+    setUser(null)
+    try {
+      const response = await axios.post('http://localhost:3000/api/users/Logout')
+      const userInfo = response.data
+      console.log(userInfo)
+      navigate('/')
+      
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
@@ -80,8 +93,8 @@ const Navbar: React.FC<{}> = () => {
           <Link className="links hover link" to="/ContactUs">
             Kontakta Oss
           </Link>
-          { user ? ( 
-            <button className="login links" onClick={handleLogout}>
+          { userIsLoggedIn ? ( 
+            <button className="login links logout" onClick={handleLogout}>
             Logga ut
           </button>
           ): (
