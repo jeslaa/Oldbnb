@@ -11,13 +11,14 @@ import "./Footer.scss";
 const Footer = () => {
   return (
     <div className="footer">
-      {/* Logo and Oldbnb */}
-      <div className="logo">
-        <BiLogoBitcoin />
-        <h3>Oldbnb</h3>
-      </div>
-
       <div className="links">
+        {/* Logo and Oldbnb */}
+        <div className="logo-footer">
+          <BiLogoBitcoin />
+          <div>
+            <h3>Oldbnb</h3>
+          </div>
+        </div>
         <Link to={"/Policy"}>Avbokningspolicy</Link>
         <Link to={"/ContactUs"}>Kontakta oss</Link>
         <Link to={"/AboutUs"}>Om oss</Link>
