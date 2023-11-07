@@ -1,7 +1,9 @@
 .footer {
+    position: relative;
     height: 18vh;
     background-color: #293241;
     margin-top: 10px;
+    overflow: hidden;
 
 
 
@@ -15,18 +17,17 @@
         flex-direction: column;
     }
 
-    // .circle-footer-container{
-    //     display: flex;
-    //     justify-content: flex-end;
-    //     align-items: flex-end;
-    //     // width: 100%;
 
-    //     .circle-footer{
-    //         background-color:#FF9C38 ;
-    //         width: 100px;
-    //         height: 100px;
-    //     }
-    // }
+        .circle-footer{
+            position: absolute;
+            background-color:#FF9C38 ;
+            bottom: -15px;
+            right: -15px;
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+        }
+    
 
 
 

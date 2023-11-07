@@ -12,10 +12,10 @@ type SearchQuery = string;
 const Navbar: React.FC<{}> = () => {
   const [searchQuery, setSearchQuery] = useState<SearchQuery>(""); // State to hold the search query
   const [menuOpen, setMenuOpen] = useState(false); //State for menu
-  const { user, setUser } = useContext(UserContext)
-  const navigate = useNavigate()
-  const token = localStorage.getItem('token')
-  const userIsLoggedIn = !!token //Flag to indicate if the user is logged in
+  const { user, setUser } = useContext(UserContext);
+  const navigate = useNavigate();
+  const token = localStorage.getItem("token");
+  const userIsLoggedIn = !!token; //Flag to indicate if the user is logged in
 
   const handleSearch = () => {
     // Handle the search logic here
@@ -33,21 +33,26 @@ const Navbar: React.FC<{}> = () => {
   };
 
   const handleLogout = async () => {
-    localStorage.removeItem('token')
-    setUser(null)
+    localStorage.removeItem("token");
+    setUser(null);
     try {
-      const response = await axios.post('http://localhost:3000/api/users/Logout')
-      const userInfo = response.data
-      console.log(userInfo)
-      navigate('/')
-      
+      const response = await axios.post(
+        "http://localhost:3000/api/users/Logout"
+      );
+      const userInfo = response.data;
+      console.log(userInfo);
+      navigate("/");
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   return (
     <div className={`navbar ${menuOpen ? "open" : ""}`}>
+      <div className="circle-header">
+        
+      </div>
+
       {/* Logo */}
       <div className="logo">
         <BiLogoBitcoin />
@@ -93,18 +98,17 @@ const Navbar: React.FC<{}> = () => {
           <Link className="links hover link" to="/ContactUs">
             Kontakta Oss
           </Link>
-          { userIsLoggedIn ? ( 
+          {userIsLoggedIn ? (
             <button className="login links logout" onClick={handleLogout}>
-            Logga ut
-          </button>
-          ): (
+              Logga ut
+            </button>
+          ) : (
             <button className="login">
-            <Link className="links" to="/Login">
-              Logga in
-            </Link>
-          </button>
+              <Link className="links" to="/Login">
+                Logga in
+              </Link>
+            </button>
           )}
-          
         </div>
       </nav>
     </div>

@@ -39,12 +39,10 @@ const Footer = () => {
         <p className="p-underline">Kakor</p>
       </div>
 
-      {/* <div className='circle-footer-container'>
+
       <div className='circle-footer'>
 
       </div>
-
-      </div> */}
     </div>
   );
 };
