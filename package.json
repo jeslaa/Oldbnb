@@ -12,16 +12,21 @@
     "d": "nodemon src/app.mjs"
   },
   "dependencies": {
+    "@fullcalendar/daygrid": "^6.1.9",
+    "@fullcalendar/react": "^6.1.9",
+    "@types/react-datepicker": "^4.19.2",
     "axios": "^1.6.0",
     "bcrypt": "^5.1.1",
     "bootstrap": "^5.3.2",
     "cors": "^2.8.5",
+    "date-fns": "^2.30.0",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.2",
     "mongodb": "4.1",
     "mongoose": "^7.6.3",
     "react": "^18.2.0",
     "react-date-range": "^1.4.0",
+    "react-datepicker": "^4.21.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.11.0",
     "react-router-dom": "^6.16.0"

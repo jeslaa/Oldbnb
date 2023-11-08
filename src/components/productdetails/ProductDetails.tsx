@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
-import "./ProductDetails.scss";
 import { Link, useParams } from "react-router-dom";
 import { MdArrowBackIosNew, MdKeyboardArrowRight } from "react-icons/md";
-import Calendar from "../Calendar/Calendar";
+import { AiOutlineWifi } from "react-icons/ai";
+import { PiForkKnife, PiTelevisionSimpleBold } from "react-icons/pi";
+import { CgCoffee } from "react-icons/cg";
+import { LuBedDouble } from "react-icons/lu";
+import RangeDatePicker from "../datepicker/DatePicker";
 import axios from "axios";
+import "./ProductDetails.scss";
 
 type ProductDetailsProps = {
   productName: string;
@@ -16,10 +20,9 @@ type ProductDetailsProps = {
 const ProductDetails: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
   const [product, setProduct] = useState<ProductDetailsProps | null>(null);
+  const [totalCost, setTotalCost] = useState<number | null>(null);
 
-  const onChange = (ranges: any) => {
-    console.log(ranges);
-  };
+  
 
   const getProductById = async (productId: string) => {
     try {
@@ -31,6 +34,8 @@ const ProductDetails: React.FC = () => {
       console.log(error);
     }
   };
+
+
 
   useEffect(() => {
     if (productId) {
@@ -123,7 +128,9 @@ const ProductDetails: React.FC = () => {
               </ul>
               <div className="details">
                 <p>Detaljer</p>
-                <Link className="policy-link" to={'/Policy'}><p>Avbokningspolicy</p></Link>
+                <Link className="policy-link" to={"/Policy"}>
+                  <p>Avbokningspolicy</p>
+                </Link>
               </div>
               <div>
                 <p className="p-details">
@@ -143,10 +150,61 @@ const ProductDetails: React.FC = () => {
                 </p>
               </div>
 
-              <p>Price: {product.price} kr</p>
+              <div className="included">
+                <h4 className="included-header">Ingår</h4>
+                <div className="included-p">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Aliquid, dolorum? Natus exercitationem, iusto cum, dolorum,
+                  fugiat ratione obcaecati sit ipsam nam velit sed
+                  necessitatibus nisi aut possimus magnam esse? Totam!
+                </div>
+                <div className="included-logos">
+                  <div>
+                    <p>
+                      Wifi <AiOutlineWifi />
+                    </p>
+                  </div>
+                  <div>
+                    <p>
+                      Kök <PiForkKnife />
+                    </p>
+                  </div>
+                  <div>
+                    <p>
+                      Frukost <CgCoffee />
+                    </p>
+                  </div>
+                  <div>
+                    <p>
+                      Dubbelsäng <LuBedDouble />
+                    </p>
+                  </div>
+                  <div>
+                    <p>
+                      TV <PiTelevisionSimpleBold />
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="calender">
-              <Calendar onChange={onChange} />
+            <div className="right-side">
+              <div className="calender">
+                <h4 className="date-picker-header">Välj datum:</h4>
+                <RangeDatePicker />
+              </div>
+              <div className="details-price">
+                <h4 className="product-price">Pris: {product.price} kr</h4>
+              </div>
+              <div className="rating">
+                <p>Betyg:</p>
+              </div>
+
+              <div className="product-det-btn">
+                <button className="favourites-btn">
+                  Lägg till i favoriter
+                </button>
+                <button className="book-btn">Boka nu</button>
+              </div>
             </div>
           </div>
 
