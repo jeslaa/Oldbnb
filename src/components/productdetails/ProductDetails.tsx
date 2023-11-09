@@ -8,6 +8,7 @@ import { LuBedDouble } from "react-icons/lu";
 import RangeDatePicker from "../datepicker/DatePicker";
 import axios from "axios";
 import "./ProductDetails.scss";
+import Carousel from "../carousel/Carousel";
 
 type ProductDetailsProps = {
   productName: string;
@@ -20,10 +21,8 @@ type ProductDetailsProps = {
 const ProductDetails: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
   const [product, setProduct] = useState<ProductDetailsProps | null>(null);
-  const [totalCost, setTotalCost] = useState<number | null>(null);
 
-  
-
+  //Get the product id from the database
   const getProductById = async (productId: string) => {
     try {
       const response = await axios.get(
@@ -34,8 +33,6 @@ const ProductDetails: React.FC = () => {
       console.log(error);
     }
   };
-
-
 
   useEffect(() => {
     if (productId) {
@@ -59,12 +56,12 @@ const ProductDetails: React.FC = () => {
       console.error("Missing productId");
     }
   }, [productId]);
-
+   
   return (
     <div className="product-container">
-      <Link to={"/"} onClick={(e) => e.stopPropagation()}>
+      <Link to={"/"} onClick={(e) => e.stopPropagation()} className="arrow-a">
         <h2 className="arrow-back">
-          <MdArrowBackIosNew />
+          <MdArrowBackIosNew  />
         </h2>
       </Link>
       <div className="accommodation">
@@ -74,6 +71,7 @@ const ProductDetails: React.FC = () => {
       </div>
       {product ? (
         <div className="product-details-container">
+          <Carousel product={product}/>
           <div className="pictures-flex">
             <div className="big-picture">
               <img
