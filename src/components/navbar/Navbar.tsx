@@ -5,27 +5,17 @@ import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { BiLogoBitcoin } from "react-icons/bi";
 import { UserContext } from "../../context/UserContext";
 import axios from "axios";
+import Searchbar from "../Searchbar/Searchbar";
 
 // Define a type for the search query
 type SearchQuery = string;
 
 const Navbar: React.FC<{}> = () => {
-  const [searchQuery, setSearchQuery] = useState<SearchQuery>(""); // State to hold the search query
   const [menuOpen, setMenuOpen] = useState(false); //State for menu
   const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
   const userIsLoggedIn = !!token; //Flag to indicate if the user is logged in
-
-  const handleSearch = () => {
-    // Handle the search logic here
-    console.log(`Performing a search for: ${searchQuery}`);
-  };
-
-  //Handle search
-  const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(e.target.value);
-  };
 
   //Toggle the menu
   const toggleMenu = () => {
@@ -62,21 +52,7 @@ const Navbar: React.FC<{}> = () => {
       <div className="circle-container">
         <div className="circle">Oldbnb</div>
       </div>
-
-      <div className="search-container">
-        <div className="search-bar">
-          <input
-            className="search-input"
-            type="text"
-            placeholder="Sök destination..."
-            value={searchQuery}
-            onChange={handleSearchInputChange}
-          />
-          <button className="search-btn" onClick={handleSearch}>
-            Sök
-          </button>
-        </div>
-      </div>
+      <Searchbar/>
 
       <nav className={`nav ${menuOpen ? "open" : ""}`}>
         <div className="menu-icon" onClick={toggleMenu}>

@@ -260,6 +260,40 @@
     .product-container {
         padding-left: 5px;
         padding-right: 5px;
-        
+        position: relative;
+
+        .arrow-back{
+            position: absolute;
+            top: 0.5rem;
+            left: 1rem;
+            color: grey;
+            z-index: 100;
+        }
+
+        .accommodation{
+            display: none;
+        }
+
+        .product-details-container {
+            .product-det-container {
+                .list {
+                    display: none;
+                }
+
+                .p-details {
+                    display: none;
+                }
+
+                .product-det {
+                    .details {
+                        display: none;
+                    }
+                }
+            }
+
+
+        }
+
+
     }
 }

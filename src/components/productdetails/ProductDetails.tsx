@@ -9,6 +9,7 @@ import RangeDatePicker from "../datepicker/DatePicker";
 import axios from "axios";
 import "./ProductDetails.scss";
 import Carousel from "../carousel/Carousel";
+import { BsFillArrowLeftSquareFill } from 'react-icons/bs'
 
 type ProductDetailsProps = {
   productName: string;
@@ -61,7 +62,7 @@ const ProductDetails: React.FC = () => {
     <div className="product-container">
       <Link to={"/"} onClick={(e) => e.stopPropagation()} className="arrow-a">
         <h2 className="arrow-back">
-          <MdArrowBackIosNew  />
+          <BsFillArrowLeftSquareFill  className="arrow"/>
         </h2>
       </Link>
       <div className="accommodation">

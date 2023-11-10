@@ -1,0 +1,122 @@
+.search-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .search-input {
+        width: 18vw;
+        height: 4vh;
+        border-radius: 15px;
+        border-style: none;
+        padding: 5px;
+        margin-right: 5px;
+        font-size: large;
+        
+    }
+
+    .search-btn {
+        height: 4vh;
+        width: 80px;
+        padding: 7px;
+        border-radius: 15px;
+        background-color: #FF9C38;
+        color: #F4F4F4;
+        border-style: none;
+        font-size: large;
+
+    }
+
+    .search-btn:hover {
+        background-color: #d16900;
+        cursor: pointer;
+    }
+
+
+}
+
+@media screen and (max-width: 860px) {
+    .search-container {
+        position: relative;
+        left: 20%;
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .search-input {
+                display: flex;
+                justify-content: center;
+                width: 200px;
+                height: 35px;
+                border-radius: 10px;
+                border-style: none;
+                padding: 10px;
+                font-size: 1rem;
+
+            }
+
+            .search-btn {
+                height: 35px;
+                width: 80px;
+                padding: 7px;
+                border-radius: 15px;
+                background-color: #FF9C38;
+                color: #F4F4F4;
+                border-style: none;
+                font-size: 1rem;
+                margin-left: 10px;
+            }
+
+            .search-btn:hover {
+                cursor: pointer;
+                background-color: #d16900;
+            }
+        }
+
+
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .search-container{
+        display: none;
+        .search-bar {
+            display: none;
+    
+            .search-input {
+                display: none;
+            }
+    
+            .search-btn {
+                display: none;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .search-bar {
+
+        .search-input {
+            width: 150px;
+            height: 35px;
+            border-radius: 10px;
+            border-style: none;
+            padding: 10px;
+            font-size: 1rem;
+
+        }
+
+        .search-btn {
+            height: 35px;
+            width: 60px;
+            padding: 7px;
+            border-radius: 15px;
+            background-color: #FF9C38;
+            color: #F4F4F4;
+            border-style: none;
+            font-size: 1rem;
+            margin-left: 10px;
+        }
+    }
+}

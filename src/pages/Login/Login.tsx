@@ -59,9 +59,6 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <button className="login-btn">Logga in</button>
-          <button className="login-google">
-            <FcGoogle></FcGoogle>Logga in med google
-          </button>
 
           <div className="sign-up">
             Har du inget konto? <Link to={"/Register"}>Registrera dig här</Link>
