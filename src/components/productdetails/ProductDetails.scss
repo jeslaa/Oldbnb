@@ -75,43 +75,62 @@
                     padding-top: 20%;
                 }
 
-                .details-price {
-                    width: 50%;
-                    padding-top: 5%;
-
-                    .product-price {}
-                }
-
-                .rating {
-                    width: 50%;
-                }
-
-                .product-det-btn {
-                    width: 50%;
-                    gap: 10px;
+                .price_btn{
+                    width: 100%;
                     display: flex;
+                    justify-content: center;
+                    align-items: center;
                     flex-direction: column;
-
-                    .favourites-btn {
-                        background-color: rgb(39, 196, 46);
-                        height: 40px;
-                        border-style: none;
+                    .details-price {
+                        width: 50%;
+                        padding-top: 5%;
+    
+                        .product-price {}
                     }
-
-                    .favourites-btn:hover {
-                        background-color: rgb(26, 146, 32);
+    
+                    .rating {
+                        width: 50%;
                     }
+    
+                    .product-det-btn {
+                        width: 50%;
+                        gap: 10px;
+                        display: flex;
+                        flex-direction: column;
+    
+                        .favourites-btn {
+                            background-color: #ff8000;
+                            height: 40px;
+                            border-style: none;
 
-                    .book-btn {
-                        border-style: none;
-                        height: 40px;
-                        background-color: rgb(206, 204, 204);
-                    }
+                            a{
+                                text-decoration: none;
+                                color: black;
+                            }
+                        }
+    
+                        .favourites-btn:hover {
+                            background-color: #c76300;
+                        }
+    
+                        .book-btn {
+                            border-style: none;
+                            height: 40px;
+                            background-color: rgb(0, 255, 0);
 
-                    .book-btn:hover {
-                        background-color: rgb(161, 161, 161);
+                            a{
+                                text-decoration: none;
+                                color: black;
+                            }
+                        }
+    
+                        .book-btn:hover {
+                            background-color: rgb(0, 206, 0);;
+                        }
                     }
                 }
+
+                
             }
 
 
@@ -225,7 +244,7 @@
                         margin-top: 10%;
                         margin-bottom: 2%;
                         padding: 20px;
-                        background-color: rgb(197, 197, 197);
+                        background-color: rgb(219, 219, 219);
 
                         .included-header {
                             display: none;
@@ -262,15 +281,15 @@
         padding-right: 5px;
         position: relative;
 
-        .arrow-back{
+        .arrow-back {
             position: absolute;
             top: 0.5rem;
             left: 1rem;
-            color: grey;
+            color: black;
             z-index: 100;
         }
 
-        .accommodation{
+        .accommodation {
             display: none;
         }
 
@@ -288,6 +307,43 @@
                     .details {
                         display: none;
                     }
+
+                    .included {
+                        padding: 5px;
+                        margin-top: 10px;
+                    } 
+
+                }
+                .right-side {
+                    display: flex;
+
+                    .price_btn{
+                        width: 100%;
+                        display: flex;
+                        flex-direction: row;
+                        padding-left: 10px;
+                        padding-right: 10px;
+                        .details-price {
+                            width: 50%;
+                            padding-top: 5%;
+        
+                            .product-price {}
+                        }
+        
+                        .rating {
+                            display: none;
+                        }    
+        
+                        .product-det-btn {
+                            width: 50%;
+                            gap: 10px;
+                            display: flex;
+                            flex-direction: column;
+        
+                        }
+                    }
+                   
+
                 }
             }
 

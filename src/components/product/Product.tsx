@@ -37,7 +37,7 @@ const Product: React.FC<ProductProps> = ({ product }) => {
           <h5 className="card-title">{product.productName}</h5>
           <p className="card-text">{slicedDescription}</p>
           <div className="container">
-            <h4 className="card-text">Pris: {product.price}kr</h4>
+            <h4 className="card-text"> {product.price}kr/natt</h4>
             <button className="details-btn">
               <Link to={`/ProductDetails/${product._id}`}>Detaljer</Link>
             </button>

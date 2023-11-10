@@ -126,7 +126,7 @@ const ProductDetails: React.FC = () => {
                 </li>
               </ul>
               <div className="details">
-                <p>Detaljer</p>
+                <p className="details-p">Detaljer</p>
                 <Link className="policy-link" to={"/Policy"}>
                   <p>Avbokningspolicy</p>
                 </Link>
@@ -191,23 +191,24 @@ const ProductDetails: React.FC = () => {
                 <h4 className="date-picker-header">Välj datum:</h4>
                 <RangeDatePicker />
               </div>
+              <div className="price_btn">
               <div className="details-price">
-                <h4 className="product-price">Pris: {product.price} kr</h4>
+                <h4 className="product-price">{product.price}kr/natt</h4>
               </div>
               <div className="rating">
                 <p>Betyg:</p>
               </div>
 
               <div className="product-det-btn">
+                <button className="book-btn"><Link to={'/Payment'}>Boka nu</Link></button>
                 <button className="favourites-btn">
-                  Lägg till i favoriter
+                  Kontakta värden
                 </button>
-                <button className="book-btn">Boka nu</button>
               </div>
+              </div>
+             
             </div>
           </div>
-
-          {/* Display other product details as needed */}
         </div>
       ) : (
         <p>Loading...</p>

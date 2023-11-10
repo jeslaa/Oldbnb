@@ -10,6 +10,7 @@ import { UserContextProvider } from './context/UserContext'
 import ProductDetails from './components/productdetails/ProductDetails'
 import Footer from './components/footer/Footer'
 import Policy from './pages/Policy/Policy'
+import Payment from './pages/Payment/Payment'
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
         <Route path='/Register' element={<Register />}/>
         <Route path='/Policy' element={<Policy/>}/>
         <Route path='/ProductDetails/:productId' element={<ProductDetails/>}/>
+        <Route path='/Payment' element={<Payment/>}/>
       </Routes>
       <Footer />
     </BrowserRouter>
