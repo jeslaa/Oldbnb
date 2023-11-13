@@ -4,6 +4,7 @@ import Searchresults from "../Searchresults/Searchresults";
 
 type SearchResultList = {
   productName: string;
+  _id: string;
 };
 type SearchResultsProps = {
   results: SearchResultList[];

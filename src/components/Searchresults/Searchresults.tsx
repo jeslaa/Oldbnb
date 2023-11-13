@@ -1,14 +1,18 @@
-import React from 'react'
-import './Searchresults.scss'
+import React from "react";
+import "./Searchresults.scss";
+import { Link } from "react-router-dom";
 
 type ResultProps = {
-    result : any;
-}
+  result: { productName: string; _id: string };
+};
 
 const Searchresults: React.FC<ResultProps> = ({ result }) => {
+ 
   return (
-    <div className='result-ind'>{result.productName}</div>
-  )
-}
+    <Link to={`/productDetails/${result._id}`} className="result-ind">
+      {result.productName}
+    </Link>
+  );
+};
 
-export default Searchresults
+export default Searchresults;
