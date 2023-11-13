@@ -7,11 +7,9 @@ import { UserContext } from "../../context/UserContext";
 import axios from "axios";
 import Searchbar from "../Searchbar/Searchbar";
 
-// Define a type for the search query
-type SearchQuery = string;
-
 const Navbar: React.FC<{}> = () => {
   const [menuOpen, setMenuOpen] = useState(false); //State for menu
+  const [results, setResults] = useState<any[]>([]);
   const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
@@ -39,9 +37,7 @@ const Navbar: React.FC<{}> = () => {
 
   return (
     <div className={`navbar ${menuOpen ? "open" : ""}`}>
-      <div className="circle-header">
-        
-      </div>
+      <div className="circle-header"></div>
 
       {/* Logo */}
       <div className="logo">
@@ -52,7 +48,7 @@ const Navbar: React.FC<{}> = () => {
       <div className="circle-container">
         <div className="circle">Oldbnb</div>
       </div>
-      <Searchbar/>
+      <Searchbar setResults={setResults} />
 
       <nav className={`nav ${menuOpen ? "open" : ""}`}>
         <div className="menu-icon" onClick={toggleMenu}>

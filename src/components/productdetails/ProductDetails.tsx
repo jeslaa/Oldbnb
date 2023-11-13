@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { MdArrowBackIosNew, MdKeyboardArrowRight } from "react-icons/md";
+import { MdKeyboardArrowRight } from "react-icons/md";
 import { AiOutlineWifi } from "react-icons/ai";
 import { PiForkKnife, PiTelevisionSimpleBold } from "react-icons/pi";
 import { CgCoffee } from "react-icons/cg";
