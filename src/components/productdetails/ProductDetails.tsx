@@ -40,7 +40,6 @@ const ProductDetails: React.FC = () => {
     }
   };
 
-  //Fetching product by id
   useEffect(() => {
     if (productId) {
       console.log(`Fetching product with ID: ${productId}`);

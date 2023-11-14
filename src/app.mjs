@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import cors from 'cors'
 import productRoute from './Database/routes/productRoute.mjs'
 import userRoute from './Database/routes/userRoute.mjs'
+import imageRoute from './Database/routes/imageRoute.mjs'
 import errorMiddleware from './Database/middleware/errorMiddleware.mjs';
 
 const app = express()
@@ -17,6 +18,8 @@ app.use(cors({
 app.use('/api/products', productRoute)
 
 app.use('/api/users', userRoute)
+
+app.use('/api/images', imageRoute)
 
 app.use(errorMiddleware)
 
