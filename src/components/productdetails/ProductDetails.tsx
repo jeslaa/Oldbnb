@@ -210,7 +210,7 @@ const ProductDetails: React.FC = () => {
               </div>
 
               <div className="product-det-btn">
-                <button className="book-btn"><Link to={'/Payment'}>Boka nu</Link></button>
+              <Link to={'/Payment'} className="book-btn">Boka nu</Link>
                 <button className="favourites-btn">
                   Kontakta värden
                 </button>
