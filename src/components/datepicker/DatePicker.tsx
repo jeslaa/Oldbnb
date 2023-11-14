@@ -1,47 +1,45 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { addDays } from "date-fns";
-import './DatePicker.scss'
-import axios from "axios";
+import { addDays, differenceInCalendarDays } from "date-fns";
+import "./DatePicker.scss";
 
-type ProductDetailsProps = {
-  productName: string;
-  description: string;
-  price: number;
-  imageUrl: string[];
-  _id: string;
+type RangeDatePickerProps = {
+  onNumberOfNightsChange: (numberOfNights: number | null) => void;
 };
 
-const RangeDatePicker: React.FC = () => {
+const RangeDatePicker: React.FC<RangeDatePickerProps> = ({
+  onNumberOfNightsChange,
+}) => {
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [endDate, setEndDate] = useState<Date | null>(null);
-  const [price, setPrice] = useState<Number | null>(null);
 
-//   useEffect(() => {
-//     if (startDate && endDate) {
-//       axios
-//         .post(`http://localhost:3000/api/price`, {
-//           startDate: startDate.toISOString(),
-//           endDate: endDate.toISOString(),
-//         })
-//         .then((respone) => {
-//           setPrice(respone.data.price);
-//         })
-//         .catch((error) => {
-//           console.log(error + "Error fetching price");
-//         });
-//     } else {
-//       setPrice(null);
-//     }
-//   }, [startDate, endDate]);
+  //Variable to dislplay how many nights the user has choosen
+  let numberOfNights = 0;
+  if (startDate && endDate) {
+    numberOfNights = differenceInCalendarDays(endDate, startDate);
+  }
 
+  //Function to track the start date
   const handleStartDateChange = (date: Date | null) => {
     setStartDate(date);
+    calculateNumberOfNights(startDate, endDate)
   };
 
+  //Function to track the end date
   const handleEndDateChange = (date: Date | null) => {
     setEndDate(date);
+    calculateNumberOfNights(startDate, date);
+  };
+
+  //Function to calculate the number of nights
+  const calculateNumberOfNights = (start: Date | null, end: Date | null) => {
+    if (start && end) {
+      const numberOfNights = differenceInCalendarDays(end, start);
+      onNumberOfNightsChange(numberOfNights);
+    } else {
+      onNumberOfNightsChange(null);
+    }
   };
 
   return (
@@ -66,8 +64,8 @@ const RangeDatePicker: React.FC = () => {
       </div>
       <div>
         <p>
-          {startDate && endDate
-            ? `Datum valda: ${startDate.toLocaleDateString()} - ${endDate.toLocaleDateString()}`
+          {numberOfNights > 0 //Displaying the number of nights the user has choosen
+            ? `Antal nätter: ${numberOfNights}`
             : "Vänligen välj datum"}
         </p>
       </div>

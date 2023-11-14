@@ -22,6 +22,11 @@ type ProductDetailsProps = {
 const ProductDetails: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
   const [product, setProduct] = useState<ProductDetailsProps | null>(null);
+  const [numberOfNights, setNumberOfNights] = useState<number | null>(null)
+
+  const handleNumberOfNightsChange = (nights: number | null) => {
+    setNumberOfNights(nights);
+  };
 
   //Get the product id from the database
   const getProductById = async (productId: string) => {
@@ -35,6 +40,7 @@ const ProductDetails: React.FC = () => {
     }
   };
 
+  //Fetching product by id
   useEffect(() => {
     if (productId) {
       console.log(`Fetching product with ID: ${productId}`);
@@ -189,11 +195,16 @@ const ProductDetails: React.FC = () => {
             <div className="right-side">
               <div className="calender">
                 <h4 className="date-picker-header">Välj datum:</h4>
-                <RangeDatePicker />
+                <RangeDatePicker onNumberOfNightsChange={handleNumberOfNightsChange} />
               </div>
               <div className="price_btn">
               <div className="details-price">
-                <h4 className="product-price">{product.price}kr/natt</h4>
+                <h4 className="product-price">{numberOfNights !==null
+                ? `Totala priset: ${numberOfNights * product.price}kr`
+                : `${product.price}kr/natt`
+              }
+                
+                </h4>
               </div>
               <div className="rating">
                 <p>Betyg:</p>

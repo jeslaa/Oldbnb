@@ -9,7 +9,8 @@ type ResultProps = {
 const Searchresults: React.FC<ResultProps> = ({ result }) => {
  
   return (
-    <Link to={`/productDetails/${result._id}`} className="result-ind">
+    //Link to productdetails for that id
+    <Link to={`/productDetails/${result._id}`} className="result-ind"> 
       {result.productName}
     </Link>
   );
