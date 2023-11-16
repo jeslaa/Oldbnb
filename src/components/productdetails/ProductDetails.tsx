@@ -9,7 +9,7 @@ import RangeDatePicker from "../datepicker/DatePicker";
 import axios from "axios";
 import "./ProductDetails.scss";
 import Carousel from "../carousel/Carousel";
-import { BsFillArrowLeftSquareFill } from 'react-icons/bs'
+import { BsFillArrowLeftSquareFill } from "react-icons/bs";
 
 type ProductDetailsProps = {
   productName: string;
@@ -22,7 +22,8 @@ type ProductDetailsProps = {
 const ProductDetails: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
   const [product, setProduct] = useState<ProductDetailsProps | null>(null);
-  const [numberOfNights, setNumberOfNights] = useState<number | null>(null)
+  const [numberOfNights, setNumberOfNights] = useState<number | null>(null);
+  const [numberOfGuests, setNumberOfGuests] = useState<number>(1);
 
   const handleNumberOfNightsChange = (nights: number | null) => {
     setNumberOfNights(nights);
@@ -62,12 +63,18 @@ const ProductDetails: React.FC = () => {
       console.error("Missing productId");
     }
   }, [productId]);
-   
+
+  const handleNumberOfGuests = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const guests = +e.target.value;
+    setNumberOfGuests(guests);
+    console.log(guests)
+  };
+
   return (
     <div className="product-container">
       <Link to={"/"} onClick={(e) => e.stopPropagation()} className="arrow-a">
         <h2 className="arrow-back">
-          <BsFillArrowLeftSquareFill  className="arrow"/>
+          <BsFillArrowLeftSquareFill className="arrow" />
         </h2>
       </Link>
       <div className="accommodation">
@@ -77,7 +84,7 @@ const ProductDetails: React.FC = () => {
       </div>
       {product ? (
         <div className="product-details-container">
-          <Carousel product={product}/>
+          <Carousel product={product} />
           <div className="pictures-flex">
             <div className="big-picture">
               <img
@@ -194,29 +201,39 @@ const ProductDetails: React.FC = () => {
             <div className="right-side">
               <div className="calender">
                 <h4 className="date-picker-header">Välj datum:</h4>
-                <RangeDatePicker onNumberOfNightsChange={handleNumberOfNightsChange} />
+                <RangeDatePicker
+                  onNumberOfNightsChange={handleNumberOfNightsChange}
+                />
               </div>
               <div className="price_btn">
-              <div className="details-price">
-                <h4 className="product-price">{numberOfNights !==null
-                ? `Totala priset: ${numberOfNights * product.price}kr`
-                : `${product.price}kr/natt`
-              }
-                
-                </h4>
-              </div>
-              <div className="rating">
-                <p>Betyg:</p>
-              </div>
+                <div className="details-price">
+                  <h4 className="product-price">
+                    {numberOfNights !== null
+                      ? `Totala priset: ${numberOfNights * product.price}kr`
+                      : `${product.price}kr/natt`}
+                  </h4>
+                </div>
+                <div className="rating">
+                  <p>Betyg:</p>
+                </div>
 
-              <div className="product-det-btn">
-              <Link to={'/Payment'} className="book-btn">Boka nu</Link>
-                <button className="favourites-btn">
-                  Kontakta värden
-                </button>
+                <div className="amount-guests">
+                  <label htmlFor="">Gäster:</label>
+                  <input
+                    type="number"
+                    className="guests"
+                    value={numberOfGuests}
+                    onChange={handleNumberOfGuests}
+                  />
+                </div>
+
+                <div className="product-det-btn">
+                  <Link to={"/Payment"} className="book-btn">
+                    Boka nu
+                  </Link>
+                  <button className="favourites-btn">Kontakta värden</button>
+                </div>
               </div>
-              </div>
-             
             </div>
           </div>
         </div>

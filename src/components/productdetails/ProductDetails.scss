@@ -87,9 +87,23 @@
     
                         .product-price {}
                     }
-    
+                    
                     .rating {
                         width: 50%;
+                    }
+
+                    .amount-guests{
+                        width: 50%;
+                        margin-bottom: 10px;
+
+                        label{
+                            padding-right: 5px;
+                        }
+
+                        input{
+                            width: 45px;
+                            padding-left: 5px;
+                        }
                     }
     
                     .product-det-btn {
@@ -339,6 +353,16 @@
                         .rating {
                             display: none;
                         }    
+
+                        .amount-guests{
+                            width: 50%;
+                            margin-bottom: 10px;
+                            padding-top: 5%;
+    
+                            input{
+                                width: 45px;
+                            }
+                        }
         
                         .product-det-btn {
                             width: 50%;
