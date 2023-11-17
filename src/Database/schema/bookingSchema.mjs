@@ -4,6 +4,7 @@ const bookingSchema = mongoose.Schema(
     {
         place: {
             type:mongoose.Schema.Types.ObjectId, 
+            ref: 'Product',
             required: true,
         },
         checkIn: {
@@ -11,6 +12,9 @@ const bookingSchema = mongoose.Schema(
         },
         checkOut: {
             type: Date, required:true
+        },
+        numberOfGuests: {
+            type: Number
         },
         price: Number
     }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { AiOutlineWifi } from "react-icons/ai";
 import { PiForkKnife, PiTelevisionSimpleBold } from "react-icons/pi";
@@ -24,6 +24,9 @@ const ProductDetails: React.FC = () => {
   const [product, setProduct] = useState<ProductDetailsProps | null>(null);
   const [numberOfNights, setNumberOfNights] = useState<number | null>(null);
   const [numberOfGuests, setNumberOfGuests] = useState<number>(1);
+  const [startDate, setStartDate] = useState<Date | null>(null);
+  const [endDate, setEndDate] = useState<Date | null>(null);
+  const navigate = useNavigate();
 
   const handleNumberOfNightsChange = (nights: number | null) => {
     setNumberOfNights(nights);
@@ -64,10 +67,25 @@ const ProductDetails: React.FC = () => {
     }
   }, [productId]);
 
+  const bookThisPlace = async () => {
+    try {
+      const response = await axios.post("http://localhost:3000/api/bookings", {
+        place: product?._id,
+        checkIn: startDate?.toISOString(),
+        checkOut: endDate?.toISOString(),
+        numberOfGuests: numberOfGuests,
+      });
+      console.log("Booking created successfully", response.data);
+      navigate("/Payment");
+    } catch (error) {
+      console.error("Error creating booking", error);
+    }
+  };
+
   const handleNumberOfGuests = (e: React.ChangeEvent<HTMLInputElement>) => {
     const guests = +e.target.value;
     setNumberOfGuests(guests);
-    console.log(guests)
+    console.log(guests);
   };
 
   return (
@@ -202,6 +220,10 @@ const ProductDetails: React.FC = () => {
               <div className="calender">
                 <h4 className="date-picker-header">Välj datum:</h4>
                 <RangeDatePicker
+                  startDate={startDate}
+                  endDate={endDate}
+                  setStartDate={setStartDate}
+                  setEndDate={setEndDate}
                   onNumberOfNightsChange={handleNumberOfNightsChange}
                 />
               </div>
@@ -228,9 +250,9 @@ const ProductDetails: React.FC = () => {
                 </div>
 
                 <div className="product-det-btn">
-                  <Link to={"/Payment"} className="book-btn">
+                  <button className="book-btn" onClick={bookThisPlace}>
                     Boka nu
-                  </Link>
+                  </button>
                   <button className="favourites-btn">Kontakta värden</button>
                 </div>
               </div>

@@ -4,6 +4,7 @@ import cors from 'cors'
 import productRoute from './Database/routes/productRoute.mjs'
 import userRoute from './Database/routes/userRoute.mjs'
 import imageRoute from './Database/routes/imageRoute.mjs'
+import bookingRoute from './Database/routes/bookingRoute.mjs'
 import errorMiddleware from './Database/middleware/errorMiddleware.mjs';
 
 const app = express()
@@ -20,6 +21,8 @@ app.use('/api/products', productRoute)
 app.use('/api/users', userRoute)
 
 app.use('/api/images', imageRoute)
+
+app.use('/api/bookings', bookingRoute)
 
 app.use(errorMiddleware)
 

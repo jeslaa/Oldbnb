@@ -6,40 +6,41 @@ import "./DatePicker.scss";
 
 type RangeDatePickerProps = {
   onNumberOfNightsChange: (numberOfNights: number | null) => void;
+  startDate: Date | null;
+  endDate: Date | null;
+  setStartDate: React.Dispatch<React.SetStateAction<Date | null>>;
+  setEndDate: React.Dispatch<React.SetStateAction<Date | null>>;
 };
 
 const RangeDatePicker: React.FC<RangeDatePickerProps> = ({
   onNumberOfNightsChange,
+  startDate,
+  endDate,
+  setStartDate,
+  setEndDate,
 }) => {
-  const [startDate, setStartDate] = useState<Date | null>(null);
-  const [endDate, setEndDate] = useState<Date | null>(null);
-
-  //Variable to dislplay how many nights the user has choosen
-  let numberOfNights = 0;
-  if (startDate && endDate) {
-    numberOfNights = differenceInCalendarDays(endDate, startDate);
-  }
-
-  //Function to track the start date
-  const handleStartDateChange = (date: Date | null) => {
-    setStartDate(date);
-    calculateNumberOfNights(startDate, endDate)
-  };
-
-  //Function to track the end date
-  const handleEndDateChange = (date: Date | null) => {
-    setEndDate(date);
-    calculateNumberOfNights(startDate, date);
-  };
-
-  //Function to calculate the number of nights
+  // Function to calculate the number of nights
   const calculateNumberOfNights = (start: Date | null, end: Date | null) => {
     if (start && end) {
-      const numberOfNights = differenceInCalendarDays(end, start);
-      onNumberOfNightsChange(numberOfNights);
+      const calculatedNumberOfNights = differenceInCalendarDays(end, start);
+      onNumberOfNightsChange(calculatedNumberOfNights);
     } else {
       onNumberOfNightsChange(null);
     }
+  };
+
+  // Function to track the start date
+  const handleStartDateChange = (date: Date | null) => {
+    console.log('Start Date Change:', date);
+    setStartDate(date);
+    calculateNumberOfNights(date, endDate);
+  };
+
+  // Function to track the end date
+  const handleEndDateChange = (date: Date | null) => {
+    console.log('End Date Change:', date);
+    setEndDate(date);
+    calculateNumberOfNights(startDate, date);
   };
 
   return (
@@ -64,8 +65,8 @@ const RangeDatePicker: React.FC<RangeDatePickerProps> = ({
       </div>
       <div>
         <p>
-          {numberOfNights > 0 //Displaying the number of nights the user has choosen
-            ? `Antal nätter: ${numberOfNights}`
+          {startDate && endDate
+            ? `Antal nätter: ${differenceInCalendarDays(endDate, startDate)}`
             : "Vänligen välj datum"}
         </p>
       </div>
