@@ -53,4 +53,25 @@ const postBooking = async (req, res) => {
   }
 };
 
-export { postBooking }
+//Fetch products
+const getBookings = async(req,res) => {
+  try {
+      const bookings = await Booking.find({})
+      res.status(200).json(bookings)
+  } catch (error) {
+      res.status(500).json({message: error.message})
+  }
+}
+
+//Fetch bookings by id
+const getBookingsById = async(req,res) => {
+  try {
+      const {id} = req.params
+      const booking = await Booking.findById(id)
+      res.status(200).json(booking)
+  } catch (error) {
+      res.status(500).json({message: error.message})
+  }
+}
+
+export { postBooking, getBookings, getBookingsById }
