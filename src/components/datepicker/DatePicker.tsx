@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { addDays, differenceInCalendarDays } from "date-fns";
+import moment  from 'moment-timezone'
 import "./DatePicker.scss";
 
 type RangeDatePickerProps = {
@@ -22,7 +23,7 @@ const RangeDatePicker: React.FC<RangeDatePickerProps> = ({
   // Function to calculate the number of nights
   const calculateNumberOfNights = (start: Date | null, end: Date | null) => {
     if (start && end) {
-      const calculatedNumberOfNights = differenceInCalendarDays(end, start);
+      const calculatedNumberOfNights = moment(end).tz('Europe/Stockholm').diff(moment(start).tz('Europe/Stockholm'), 'days');
       onNumberOfNightsChange(calculatedNumberOfNights);
     } else {
       onNumberOfNightsChange(null);
@@ -31,16 +32,14 @@ const RangeDatePicker: React.FC<RangeDatePickerProps> = ({
 
   // Function to track the start date
   const handleStartDateChange = (date: Date | null) => {
-    console.log('Start Date Change:', date);
     setStartDate(date);
     calculateNumberOfNights(date, endDate);
   };
 
   // Function to track the end date
   const handleEndDateChange = (date: Date | null) => {
-    console.log('End Date Change:', date);
     setEndDate(date);
-    calculateNumberOfNights(startDate, date);
+    calculateNumberOfNights(startDate, date)
   };
 
   return (

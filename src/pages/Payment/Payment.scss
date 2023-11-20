@@ -1,0 +1,144 @@
+.payment-container {
+    display: flex;
+    padding-left: 80px;
+    padding-right: 80px;
+    padding-top: 40px;
+    width: 100%;
+
+    .payment-left-container {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+
+        .place-image {
+
+            .image {
+                width: 100%;
+            }
+        }
+
+        .details {
+            display: flex;
+            padding-top: 10px;
+            text-decoration: underline;
+
+            .policy {
+                margin-left: 20px;
+            }
+        }
+
+        .box-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin-top: 20px;
+            width: 100%;
+            background-color: rgb(196, 196, 196);
+            padding: 20px;
+
+            p {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 0px;
+            }
+
+            .center {
+                .people-icon {
+                    font-size: 1.5rem;
+                }
+
+                .schedule-icon {
+                    font-size: 1.5rem;
+                }
+            }
+
+
+        }
+    }
+
+    .payment-right-container {
+        display: flex;
+        flex-direction: column;
+        padding-left: 20px;
+        width: 50%;
+
+        .payment-header-right {
+            width: 100%;
+
+            h3 {
+                text-align: center;
+            }
+
+            p {
+                text-align: center;
+            }
+
+
+
+        }
+
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            #form {
+               
+            }
+
+            .form-group{
+                padding-top: 30px;
+            }
+
+            input{
+                width: 35vw;
+                height: 35px;
+            }
+        }
+    }
+
+    .sum-box-container{
+        position: relative;
+        display: flex;
+        margin-left: auto;
+        margin-right: auto;
+        align-items: center;
+        margin-top: 11%;
+        width: 35vw;
+        background-color: rgb(196, 196, 196);
+    }
+
+    .sum-box{
+        display: flex;
+        padding-top: 10px;
+        padding-left: 10px;
+        width: 100%;
+
+        .totals{
+            width: 50%;
+        }
+
+        .pay{
+            
+            width: 50%;
+            
+
+            .pay-btn{
+                position: absolute; 
+                bottom: 5px;
+                right: 5px;
+                width: 40%;
+                border-style: none;
+                background-color: #459e60;
+                height: 35px;
+                color: white;
+            }
+
+            .pay-btn:hover{
+                background-color: #54b872;
+            }
+        }
+    }
+
+}

@@ -1,5 +1,10 @@
 .login-section{
     .login-form{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 70vh;
         
     
         input{

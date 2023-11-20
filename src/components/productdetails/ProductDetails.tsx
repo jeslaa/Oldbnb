@@ -10,6 +10,7 @@ import axios from "axios";
 import "./ProductDetails.scss";
 import Carousel from "../carousel/Carousel";
 import { BsFillArrowLeftSquareFill } from "react-icons/bs";
+import moment from "moment-timezone";
 
 type ProductDetailsProps = {
   productName: string;
@@ -69,14 +70,20 @@ const ProductDetails: React.FC = () => {
 
   const bookThisPlace = async () => {
     try {
+      // Adjusting dates to UTC before sending to the server
+      const checkInDate = startDate ? moment(startDate).utc() : null;
+      const checkOutDate = endDate ? moment(endDate).utc() : null;
+  
       const response = await axios.post("http://localhost:3000/api/bookings", {
         place: product?._id,
-        checkIn: startDate?.toISOString(),
-        checkOut: endDate?.toISOString(),
+        checkIn: checkInDate?.toISOString(),
+        checkOut: checkOutDate?.toISOString(),
         numberOfGuests: numberOfGuests,
       });
+  
+      const bookingId = response.data.booking._id;
       console.log("Booking created successfully", response.data);
-      navigate("/Payment");
+      navigate(`/Payment/${productId}/${bookingId}`);
     } catch (error) {
       console.error("Error creating booking", error);
     }

@@ -32,7 +32,8 @@ const ProductForm = () => {
   };
 
   return (
-    <form className="form-container" onSubmit={saveProduct}>
+    <div className="form-form">
+    <form className="form-containerr" onSubmit={saveProduct}>
       <h2 className="center">Skapa ett boende</h2>
       <div className="form-group">
         <label typeof="formGroupExampleInput">Namn</label>
@@ -83,10 +84,13 @@ const ProductForm = () => {
           }}
         ></input>
       </div>
+      
+     
       <div className="submit">
         <button className="submit-btn">Skicka</button>
       </div>
     </form>
+   </div>
   );
 };
 

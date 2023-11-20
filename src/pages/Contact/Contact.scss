@@ -3,7 +3,10 @@
 
     .form-container {
         display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
         align-items: flex-start;
+        padding-top: 10%;
 
         .header {
             display: flex;
@@ -294,7 +297,6 @@
 
         .form-container{
             display: flex;
-            justify-content: center;
             align-items: center;
         }
     }
