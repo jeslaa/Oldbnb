@@ -1,0 +1,45 @@
+.contact-owner-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-top: 80px;
+    padding-bottom: 20px;
+
+    .form-contact-container{
+        .labels-contact{
+            margin-top: 10px;
+        }
+
+        .input-contact{
+            width: 40vw;
+            height: 5vh;
+            
+        }
+
+        .text-area{
+            margin-top: 15px;
+            height: 25vh;
+        }
+
+        .contact-submit-btn{
+            display: flex;
+            justify-content: center;
+
+            .submit-btn{
+                background-color: orange;
+                width: 50%;
+                height: 3.5vh;
+                border-style: none;
+                color: #ffff;
+            }
+            .submit-btn:hover{
+                background-color: rgb(189, 123, 0);
+                width: 50%;
+                height: 3.5vh;
+                border-style: none;
+                color: #ffff;
+            }
+        }
+    }
+}

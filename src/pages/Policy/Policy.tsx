@@ -44,7 +44,7 @@ const Policy: React.FC = () => {
 
       <div className="container2">
       <div className="policy-image1">
-            {images.map((item, index) => (
+            {images.slice(0,1).map((item, index) => (
               <img className="img-policy1"
                 src={item.image[0]}
                 alt="Avbokningspolicy bild"

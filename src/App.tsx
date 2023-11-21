@@ -11,6 +11,8 @@ import ProductDetails from "./components/productdetails/ProductDetails";
 import Footer from "./components/footer/Footer";
 import Policy from "./pages/Policy/Policy";
 import Payment from "./pages/Payment/Payment";
+import Confirmation from "./pages/Confirmation/Confirmation";
+import ContactOwner from "./pages/ContactOwner/Contactowner";
 
 const App = () => {
   return (
@@ -31,6 +33,8 @@ const App = () => {
               element={<ProductDetails />}
             />
             <Route path="/Payment/:productId/:bookingId" element={<Payment />} />
+            <Route path="/Confirmation" element={<Confirmation />}/>
+            <Route path="/ContactOwner" element={<ContactOwner />}/>
           </Routes>
           <Footer />
         </BrowserRouter>

@@ -1,9 +1,12 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { AiOutlineSchedule } from "react-icons/ai";
 import { IoIosPeople } from "react-icons/io";
 import "./Payment.scss";
 import axios from "axios";
+import { MdNightsStay } from "react-icons/md";
+import { format } from "date-fns";
+import { IoArrowBackCircleSharp } from "react-icons/io5";
 
 type ProductDetailsProps = {
   productName: string;
@@ -22,10 +25,6 @@ type BookingDetailsProps = {
   _id: string;
 };
 
-const handlePay = () => {
-    
-}
-
 const Payment: React.FC = () => {
   const { productId, bookingId } = useParams<{
     productId: string;
@@ -33,7 +32,11 @@ const Payment: React.FC = () => {
   }>();
   const [product, setProduct] = useState<ProductDetailsProps | null>(null);
   const [booking, setBooking] = useState<BookingDetailsProps | null>(null);
+  const location = useLocation();
+  const numberOfNights = location.state?.numberOfNights || null;
+  const navigate = useNavigate();
 
+  console.log(numberOfNights)
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -59,6 +62,10 @@ const Payment: React.FC = () => {
     }
   }, [productId, bookingId]);
 
+  const handlePay = () => {
+    navigate('/Confirmation')
+  };
+
   return (
     <div className="payment-container">
       <div className="payment-left-container">
@@ -71,6 +78,9 @@ const Payment: React.FC = () => {
               <img className="image" src={image} alt={image} />
             </div>
           ))}
+          <div className="back-btn">
+            <Link to={`/ProductDetails/${productId}`}><h1><IoArrowBackCircleSharp className="back-btn-icon"/></h1></Link>
+          </div>
         </div>
 
         <div className="details">
@@ -82,18 +92,40 @@ const Payment: React.FC = () => {
         </div>
         <div className="product-description">{product?.description}</div>
         <div className="box-container">
-          <div className="check-in center">
+          <div className="check-In-Out1">
+            <div className="check-in center">
+              <p>
+                <AiOutlineSchedule className="schedule-icon" />{" "}
+                {booking?.checkIn
+                  ? format(new Date(booking.checkIn), "yyyy-MM-dd")
+                  : "N/A"}
+              </p>
+            </div>
+            <div className="check-out center">
+              <p>{booking?.checkOut ? format(new Date(booking.checkOut), "yyyy-MM-dd"): ''}</p>
+            </div>
+          </div>
+
+          <div className="check-in center check2">
             <p>
-              <AiOutlineSchedule className="schedule-icon" /> {booking?.checkIn}{" "}
+              <AiOutlineSchedule className="schedule-icon" />{" "}
+              {booking?.checkIn ? format(new Date(booking.checkIn), "yyyy-MM-dd"): ''}
+              {""}
             </p>
           </div>
-          <div className="check-out center">
-            <p>{booking?.checkOut}</p>
+          <div className="check-out center check2">
+            <p>{booking?.checkOut ? format(new Date(booking.checkOut), "yyyy-MM-dd"): ''}</p>
           </div>
           <div className="guests center">
             <p>
               <IoIosPeople className="people-icon" /> Antal Gäster:{" "}
               {booking?.numberOfGuests}
+            </p>
+          </div>
+          <div className="guests center">
+            <p>
+              <MdNightsStay className="people-icon" /> Antal Nätter:{" "}
+              {numberOfNights}
             </p>
           </div>
         </div>
@@ -148,27 +180,30 @@ const Payment: React.FC = () => {
               <br />
               <input type="text" className="inputs" />
             </div>
-           
-            <div className="sum-box-container">
-          <div className="sum-box">
-            <div className="totals">
-              <p>
-                Delsumma:{" "}
-                {booking?.price !== undefined ? booking?.price - 346 : "N/A"} :-
-              </p>
-              <p>Moms: 346 :-</p>
-              <h3>Totalt: {booking?.price} kr</h3>
-            </div>
 
-            <div className="pay">
-              <button className="pay-btn" onClick={handlePay}>Betala</button>
+            <div className="sum-box-container">
+              <div className="sum-box">
+                <div className="totals">
+                  <p>
+                    Delsumma:{" "}
+                    {booking?.price !== undefined
+                      ? booking?.price - 346
+                      : "N/A"}{" "}
+                    :-
+                  </p>
+                  <p>Moms: 346 :-</p>
+                  <h3>Totalt: {booking?.price} kr</h3>
+                </div>
+
+                <div className="pay">
+                  <button className="pay-btn" onClick={handlePay}>
+                    Betala
+                  </button>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
           </form>
         </div>
-
-       
       </div>
     </div>
   );

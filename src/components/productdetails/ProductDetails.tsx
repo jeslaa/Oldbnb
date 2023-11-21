@@ -73,21 +73,29 @@ const ProductDetails: React.FC = () => {
       // Adjusting dates to UTC before sending to the server
       const checkInDate = startDate ? moment(startDate).utc() : null;
       const checkOutDate = endDate ? moment(endDate).utc() : null;
-  
+
       const response = await axios.post("http://localhost:3000/api/bookings", {
         place: product?._id,
         checkIn: checkInDate?.toISOString(),
         checkOut: checkOutDate?.toISOString(),
         numberOfGuests: numberOfGuests,
       });
-  
+
+
       const bookingId = response.data.booking._id;
       console.log("Booking created successfully", response.data);
-      navigate(`/Payment/${productId}/${bookingId}`);
+      //Include numberOfNights in the state when navigating
+      navigate(`/Payment/${productId}/${bookingId}`, {
+        state: { numberOfNights },
+      });
     } catch (error) {
       console.error("Error creating booking", error);
     }
   };
+
+  const handleContact = () => {
+    navigate('/ContactOwner')
+  }
 
   const handleNumberOfGuests = (e: React.ChangeEvent<HTMLInputElement>) => {
     const guests = +e.target.value;
@@ -260,7 +268,7 @@ const ProductDetails: React.FC = () => {
                   <button className="book-btn" onClick={bookThisPlace}>
                     Boka nu
                   </button>
-                  <button className="favourites-btn">Kontakta värden</button>
+                  <button className="favourites-btn" onClick={handleContact}>Kontakta värden</button>
                 </div>
               </div>
             </div>

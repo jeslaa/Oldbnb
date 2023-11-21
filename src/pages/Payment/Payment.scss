@@ -15,6 +15,22 @@
             .image {
                 width: 100%;
             }
+
+            .back-btn{
+                display: none;
+                position: absolute;
+                top: 0;
+                left: 5px;
+                
+                a{
+                    color: black;
+                }
+
+                a:hover{
+                    color: blue;
+                    cursor: pointer;
+                }
+            }
         }
 
         .details {
@@ -35,6 +51,14 @@
             width: 100%;
             background-color: rgb(196, 196, 196);
             padding: 20px;
+
+            .check-In-Out1{
+                display: none;
+
+                // .center{
+                //     display: none;
+                // }
+            }
 
             p {
                 display: flex;
@@ -83,22 +107,21 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            #form {
-               
-            }
 
-            .form-group{
+            #form {}
+
+            .form-group {
                 padding-top: 30px;
             }
 
-            input{
+            input {
                 width: 35vw;
                 height: 35px;
             }
         }
     }
 
-    .sum-box-container{
+    .sum-box-container {
         position: relative;
         display: flex;
         margin-left: auto;
@@ -109,23 +132,23 @@
         background-color: rgb(196, 196, 196);
     }
 
-    .sum-box{
+    .sum-box {
         display: flex;
         padding-top: 10px;
         padding-left: 10px;
         width: 100%;
 
-        .totals{
+        .totals {
             width: 50%;
         }
 
-        .pay{
-            
-            width: 50%;
-            
+        .pay {
 
-            .pay-btn{
-                position: absolute; 
+            width: 50%;
+
+
+            .pay-btn {
+                position: absolute;
                 bottom: 5px;
                 right: 5px;
                 width: 40%;
@@ -135,10 +158,375 @@
                 color: white;
             }
 
-            .pay-btn:hover{
+            .pay-btn:hover {
                 background-color: #54b872;
             }
         }
     }
 
 }
+
+@media only screen and (max-width: 1024px) {
+    .payment-container {
+        display: flex;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 20px;
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 1023px) {
+    .payment-container {
+        display: block;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 10px;
+        width: 100%;
+
+        .payment-left-container {
+            display: block;
+            flex-direction: column;
+            width: 100%;
+
+            .place-image {
+                position: relative;
+                .image {
+                    width: 100%;
+                }
+
+                .back-btn{
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    left: 5px;
+                    
+                    a{
+                        color: black;
+                    }
+
+                    a:hover{
+                        color: blue;
+                        cursor: pointer;
+                    }
+                }
+
+                .back-btn{
+                    position: absolute;
+                    top: 0;
+                    left: 5px;
+                    
+                    a{
+                        color: black;
+                    }
+
+                    a:hover{
+                        color: blue;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            .details {
+                display: flex;
+                padding-top: 10px;
+                text-decoration: underline;
+
+                .policy {
+                    margin-left: 20px;
+                }
+            }
+
+            .box-container {
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                margin-top: 20px;
+                width: 100%;
+                height: 10vh;
+                background-color: rgb(196, 196, 196);
+                padding: 5px;
+                margin-bottom: 10px;
+
+                .check-In-Out1{
+                    display: none;
+
+                    .center{
+                        display: none;
+                    }
+                }
+
+                p {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin: 0px;
+                }
+
+                .center {
+                    .people-icon {
+                        font-size: 1.5rem;
+                    }
+
+                    .schedule-icon {
+                        font-size: 1.5rem;
+                    }
+                }
+
+
+            }
+        }
+
+        .payment-right-container {
+            display: flex;
+            flex-direction: column;
+            padding-left: 0px;
+            width: 100%;
+
+            .payment-header-right {
+                width: 100%;
+
+                h3 {
+                    text-align: center;
+                }
+
+                p {
+                    text-align: center;
+                }
+
+
+
+            }
+
+            .form-container {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                #form {}
+
+                .form-group {
+                    padding-top: 30px;
+                }
+
+                input {
+                    width: 90vw;
+                    height: 35px;
+                }
+            }
+        }
+
+        .sum-box-container {
+            position: relative;
+            display: flex;
+            margin-left: auto;
+            margin-right: auto;
+            align-items: center;
+            margin-top: 11%;
+            width: 90vw;
+            background-color: rgb(196, 196, 196);
+        }
+
+        .sum-box {
+            display: flex;
+            padding-top: 10px;
+            padding-left: 10px;
+            width: 100%;
+
+            .totals {
+                width: 50%;
+            }
+
+            .pay {
+
+                width: 50%;
+
+
+                .pay-btn {
+                    position: absolute;
+                    bottom: 5px;
+                    right: 5px;
+                    width: 40%;
+                    border-style: none;
+                    background-color: #459e60;
+                    height: 35px;
+                    color: white;
+                }
+
+                .pay-btn:hover {
+                    background-color: #54b872;
+                }
+            }
+        }
+
+    }
+}
+
+
+@media only screen and (max-width: 425px) {
+    .payment-container {
+        display: block;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 10px;
+        width: 100%;
+
+        .payment-left-container {
+            display: block;
+            flex-direction: column;
+            width: 100%;
+
+            .place-image {
+
+                .image {
+                    width: 100%;
+                }
+            }
+
+            .details {
+                display: flex;
+                padding-top: 10px;
+                text-decoration: underline;
+
+                .policy {
+                    margin-left: 20px;
+                }
+            }
+
+            .box-container {
+                display: flex;
+                align-items: flex-start;
+                justify-content: space-around;
+                flex-direction: column;
+                margin-top: 20px;
+                width: 100%;
+                height: 10vh;
+                background-color: rgb(196, 196, 196);
+                padding: 5px;
+                margin-bottom: 10px;
+
+                .check-In-Out1{
+                    display: flex;
+                    flex-direction: row;
+                    width: 100%;
+                    gap: 30%;
+
+                    .center{
+                        display: block;
+                    }
+                }
+
+                .check2{
+                    display: none;
+                }
+
+                p {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin: 0px;
+                }
+
+                .center {
+                    .people-icon {
+                        font-size: 1.5rem;
+                    }
+
+                    .schedule-icon {
+                        font-size: 1.5rem;
+                    }
+                }
+
+
+            }
+        }
+
+        .payment-right-container {
+            display: flex;
+            flex-direction: column;
+            padding-left: 0px;
+            width: 100%;
+
+            .payment-header-right {
+                width: 100%;
+
+                h3 {
+                    text-align: center;
+                }
+
+                p {
+                    text-align: center;
+                }
+
+
+
+            }
+
+            .form-container {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                #form {}
+
+                .form-group {
+                    padding-top: 30px;
+                }
+
+                input {
+                    width: 90vw;
+                    height: 35px;
+                }
+            }
+        }
+
+        .sum-box-container {
+            position: relative;
+            display: flex;
+            margin-left: auto;
+            margin-right: auto;
+            align-items: center;
+            margin-top: 11%;
+            width: 90vw;
+            background-color: rgb(196, 196, 196);
+        }
+
+        .sum-box {
+            display: flex;
+            padding-top: 10px;
+            padding-left: 10px;
+            width: 100%;
+
+            .totals {
+                width: 50%;
+            }
+
+            .pay {
+
+                width: 50%;
+
+
+                .pay-btn {
+                    position: absolute;
+                    bottom: 5px;
+                    right: 5px;
+                    width: 40%;
+                    border-style: none;
+                    background-color: #459e60;
+                    height: 35px;
+                    color: white;
+                }
+
+                .pay-btn:hover {
+                    background-color: #54b872;
+                }
+            }
+        }
+
+    }
+}
+
+
+
