@@ -5,6 +5,7 @@ import Products from "../../components/product/Product";
 import './Home.scss'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+//Setting the product props
 type Product = {
   creationDate: string | number | Date;
   productName: string;
@@ -19,7 +20,7 @@ const Home = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   
-
+  //Fetching the products from the database
   const getProducts = async () => {
     try {
       setIsLoading(true);

@@ -11,6 +11,7 @@ type ImageProps = {
 const Confirmation = () => {
   const [images, setImages] = useState<ImageProps[]>([]);
 
+  //Fetching the images from the database
   const getImages = async () => {
     try {
       const response = await axios.get("http://localhost:3000/api/images/");

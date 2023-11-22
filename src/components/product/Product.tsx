@@ -19,6 +19,7 @@ const Product: React.FC<ProductProps> = ({ product }) => {
   const imageMaxHeight = '400px';
   const maxDescriptionLength = 50;
 
+  //Shortens down the description
   const slicedDescription =
     product.description.length > maxDescriptionLength
       ? `${product.description.slice(0, maxDescriptionLength)}...`

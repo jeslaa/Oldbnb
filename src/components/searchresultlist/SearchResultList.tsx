@@ -13,7 +13,8 @@ type SearchResultsProps = {
 const SearchresultsList: React.FC<SearchResultsProps> = ({ results }) => {
   return (
     <div className="results-list">
-  {results.map((result, index) => (
+      {/* Mapping out the search results */}
+  {results.map((result, index) => ( 
     <Searchresults result={result} key={index} />
   ))}
 </div>

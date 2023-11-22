@@ -5,6 +5,7 @@ import { addDays, differenceInCalendarDays } from "date-fns";
 import moment  from 'moment-timezone'
 import "./DatePicker.scss";
 
+//Defining the props
 type RangeDatePickerProps = {
   onNumberOfNightsChange: (numberOfNights: number | null) => void;
   startDate: Date | null;
@@ -13,7 +14,7 @@ type RangeDatePickerProps = {
   setEndDate: React.Dispatch<React.SetStateAction<Date | null>>;
 };
 
-const RangeDatePicker: React.FC<RangeDatePickerProps> = ({
+const RangeDatePicker: React.FC<RangeDatePickerProps> = ({ //Destructure props
   onNumberOfNightsChange,
   startDate,
   endDate,

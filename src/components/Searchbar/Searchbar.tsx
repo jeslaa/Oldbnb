@@ -38,6 +38,7 @@ const Searchbar: React.FC<SearchbarProps> = ({ setResults }) => {
     }
   };
 
+  //Setting the search to the value
   const handleChange = (value: any) => {
     setSearchQuery(value);
     getData(value);

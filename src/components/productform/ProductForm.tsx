@@ -13,11 +13,12 @@ const ProductForm = () => {
   const saveProduct = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    //Error handling
     if (name === "" || description === "" || price === "" || images.length === 0) {
       alert("Var vänlig och fyll i allt i formuläret");
     }
 
-    //Post to database
+    //Post to the database
     try {
       await axios.post("http://localhost:3000/api/products/", {
         productName: name,

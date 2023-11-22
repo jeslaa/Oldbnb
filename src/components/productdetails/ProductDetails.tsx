@@ -33,7 +33,7 @@ const ProductDetails: React.FC = () => {
     setNumberOfNights(nights);
   };
 
-  //Get the product id from the database
+  //Fetch to the database
   const getProductById = async (productId: string) => {
     try {
       const response = await axios.get(
@@ -45,6 +45,7 @@ const ProductDetails: React.FC = () => {
     }
   };
 
+  //Get the product id from the database
   useEffect(() => {
     if (productId) {
       console.log(`Fetching product with ID: ${productId}`);
@@ -68,9 +69,10 @@ const ProductDetails: React.FC = () => {
     }
   }, [productId]);
 
+  //Function to send the data for the booking to the database
   const bookThisPlace = async () => {
     try {
-      // Adjusting dates to UTC before sending to the server
+      //Adjusting dates to UTC before sending to the server
       const checkInDate = startDate ? moment(startDate).utc() : null;
       const checkOutDate = endDate ? moment(endDate).utc() : null;
 
@@ -80,7 +82,6 @@ const ProductDetails: React.FC = () => {
         checkOut: checkOutDate?.toISOString(),
         numberOfGuests: numberOfGuests,
       });
-
 
       const bookingId = response.data.booking._id;
       console.log("Booking created successfully", response.data);
@@ -93,10 +94,12 @@ const ProductDetails: React.FC = () => {
     }
   };
 
+  //Function to navigate to contactowner page
   const handleContact = () => {
-    navigate('/ContactOwner')
-  }
+    navigate("/ContactOwner");
+  };
 
+  //Setting the number of guests based on user input
   const handleNumberOfGuests = (e: React.ChangeEvent<HTMLInputElement>) => {
     const guests = +e.target.value;
     setNumberOfGuests(guests);
@@ -268,7 +271,9 @@ const ProductDetails: React.FC = () => {
                   <button className="book-btn" onClick={bookThisPlace}>
                     Boka nu
                   </button>
-                  <button className="favourites-btn" onClick={handleContact}>Kontakta värden</button>
+                  <button className="favourites-btn" onClick={handleContact}>
+                    Kontakta värden
+                  </button>
                 </div>
               </div>
             </div>

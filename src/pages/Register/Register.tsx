@@ -15,13 +15,14 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
+  //Register function
   const registerUser = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (name === "" || email === "" || password === "") {
+    if (name === "" || email === "" || password === "") { //Checking that neccessary information exists
       alert("Var vänlig och fyll i allt i formuläret");
     }
     try {
-      await axios.post("http://localhost:3000/api/users/", {
+      await axios.post("http://localhost:3000/api/users/", { //Posting user to the database
         userName: name,
         email: email,
         password: password,

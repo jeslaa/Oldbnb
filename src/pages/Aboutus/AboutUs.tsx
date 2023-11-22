@@ -10,6 +10,7 @@ type ImageProps = {
 const AboutUs = () => {
   const [images, setImages] = useState<ImageProps[]>([]);
 
+  //Fetching the images from the database
   const getImages = async () => {
     try {
       const response = await axios.get("http://localhost:3000/api/images/");
@@ -45,6 +46,7 @@ const AboutUs = () => {
       </div>
 
       <div className="right-top">
+        {/* Slicing to choose which images to display */}
         {images.slice(1, 5).map((item, index) => (
           <img
             className="about-images"

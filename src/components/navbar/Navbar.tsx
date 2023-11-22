@@ -20,6 +20,7 @@ const Navbar: React.FC<{}> = () => {
     setMenuOpen((open) => !open);
   };
 
+  //Logout user
   const handleLogout = async () => {
     localStorage.removeItem("token");
     setUser(null);
