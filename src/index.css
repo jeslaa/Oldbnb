@@ -1,5 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,700&family=Gabarito&family=Montserrat:wght@700&family=Neucha&family=Open+Sans:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,700&family=Gabarito&family=Montserrat:wght@700&family=Neucha&display=swap');
 *{
   margin: 0;
   box-sizing: border-box;
   padding: 0;
 }
+
+h1, h2, h3, h4, h5, h6{
+  font-family: Gabarito;
+}
+
+p{
+  font-family: open-sans;
+  font-weight: 400;
+}
+
