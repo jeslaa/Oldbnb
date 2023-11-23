@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Products from "../../components/product/Product";
 import './Home.scss'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Searchbar from "../../components/Searchbar/Searchbar";
 
 //Setting the product props
 type Product = {
@@ -18,6 +19,7 @@ type Product = {
 const Home = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [results, setResults] = useState<any[]>([]);
 
   
   //Fetching the products from the database
@@ -39,6 +41,10 @@ const Home = () => {
 
   return (
     <div>
+      <div className="searchbar-425">
+      <Searchbar setResults={setResults}/>
+      </div>
+   
       <div className="btn-container"> 
       <button className="product-form"><Link to='/ProductForm'>Skapa Boende</Link></button>
       </div>
