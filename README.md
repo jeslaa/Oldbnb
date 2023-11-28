@@ -1,6 +1,6 @@
 # Oldbnb
 
-Airbnb look alike school project
+Airbnb like school project
 
 npm run dev - start localhost
 
